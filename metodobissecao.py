@@ -1,19 +1,16 @@
-from numpy import mean, e
+from numpy import mean, e, log
 
-def _f(x): return (e**(-2*x)) - x
+def _f(x: float) -> float: return (e**(-2*x)) - x
+def _f2(x: float) -> float: return round(950*log(200/(200-3*x)) - 9.8*x - 500, 5)
 
-def bissecao(intervalo, f):
+def bissecao(intervalo: list, f: function) -> (tuple | str):
     if f(intervalo[0])*f(intervalo[1]) > 0: return "Não existe raíz no intervalo"
 
     i = 0
-    while intervalo[1] - intervalo[0] > 10**-5:
+    while intervalo[1] - intervalo[0] > 10**-6:
         i += 1
 
         xbarra = round(mean(intervalo),6)
-        # fa = f(intervalo[0])
-        # fb = f(intervalo[1])
-        # fxbarra = f(xbarra)
-        # erro = abs(intervalo[1] - intervalo[0])
         ...
         if f(xbarra) < 0 and f(intervalo[0]) < 0:
             intervalo[0] = xbarra
@@ -28,4 +25,4 @@ def bissecao(intervalo, f):
     ...
     return mean(intervalo), i
 
-print(bissecao([0,0.5], _f))
+print(bissecao([40,42], _f2))
