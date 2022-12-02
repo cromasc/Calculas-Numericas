@@ -50,6 +50,4 @@ sistema = [
     [1,-1,5,5]
 ]
 
-for i in gauss(sistema): print(i)
-
 print(resolver(gauss(sistema)))
