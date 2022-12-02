@@ -9,7 +9,6 @@ def gauss(matriz: list):
                 for coluna in range(len(matriz[linha])):
                     matriz[linha][coluna] = matriz[linha][coluna] - m*matriz[pivot][coluna]
 
-        for i in matriz: print(i)
         return matriz
 
 
