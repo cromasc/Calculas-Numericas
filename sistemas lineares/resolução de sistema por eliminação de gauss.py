@@ -9,16 +9,16 @@ def gauss(matriz: list):
                 for coluna in range(len(matriz[linha])):
                     matriz[linha][coluna] = round(matriz[linha][coluna] - m*matriz[pivot][coluna],3)
 
-        t = 0
-        for i in range(len(matriz)-1): 
-            if matriz[i][i] == 0: t += 1
-        while t>0:
-            for i in range(len(matriz)-1):
-                if matriz[i][i] == 0:
-                    aux = matriz[i]
-                    matriz[i] = matriz[i+1]
-                    matriz[i+1] = aux
-                    t -= 1
+        zeros = 0
+        for n in range(len(matriz)-1): 
+            if matriz[n][n] == 0: zeros += 1
+        while zeros>0:
+            for n in range(len(matriz)-1):
+                if matriz[n][n] == 0:
+                    aux = matriz[n]
+                    matriz[n] = matriz[n+1]
+                    matriz[n+1] = aux
+                    zeros -= 1
         return matriz
             
 def somalinha(linha: list, solucoes: list):
