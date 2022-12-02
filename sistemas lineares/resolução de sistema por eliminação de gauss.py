@@ -7,12 +7,21 @@ def gauss(matriz: list):
                 else: pass
 
                 for coluna in range(len(matriz[linha])):
-                    matriz[linha][coluna] = matriz[linha][coluna] - m*matriz[pivot][coluna]
+                    matriz[linha][coluna] = round(matriz[linha][coluna] - m*matriz[pivot][coluna],3)
 
+        t = 0
+        for i in range(len(matriz)-1): 
+            if matriz[i][i] == 0: t += 1
+        while t>0:
+            for i in range(len(matriz)-1):
+                if matriz[i][i] == 0:
+                    aux = matriz[i]
+                    matriz[i] = matriz[i+1]
+                    matriz[i+1] = aux
+                    t -= 1
         return matriz
-
-
-def somalinha(linha: list, solucoes:list):
+            
+def somalinha(linha: list, solucoes: list):
     n = 0
 
     intervalo = list(range(len(linha)-len(solucoes), len(linha)))
@@ -30,15 +39,17 @@ def resolver(matriz: list):
 
         solucao = [0 for _ in range(len(matriz))]
 
-        for i in n: solucao[i] = (matriz[i][len(matriz)]-(somalinha(matriz[i][:len(matriz)],solucao)))/matriz[i][i]
+        for i in n: solucao[i] = round((matriz[i][len(matriz)]-(somalinha(matriz[i][:len(matriz)],solucao)))/matriz[i][i],3)
 
         return solucao
     else: return None
 
 sistema = [
-    [1,2,3,10],
-    [4,5,6,10],
-    [7,8,9,10]
+    [3,3,1,7],
+    [2,2,-1,3],
+    [1,-1,5,5]
 ]
+
+for i in gauss(sistema): print(i)
 
 print(resolver(gauss(sistema)))
