@@ -4,9 +4,9 @@
 #     [1,3,6,1]
 # ]
 
-def x1(x2,x3): return round(1 - x2/10 + x3/10,6)
-def x2(x1,x3): return round(1.2 - x1/10 - x3/10,6)
-def x3(x1,x2): return round(1.1 - x1*0.2 + x2/10,6)
+def x1(x2,x3): return round((14 - (-2*x2 - 4*x3))/20 ,6)
+def x2(x1,x3): return round((25 - (-4*x1 + 4*x3))/25 ,6)
+def x3(x1,x2): return round((38 - (-4*x1 - 8*x2))/50 ,6)
 
 def erro(xk0: list, xk1: list): return [abs(xk1[i]-xk0[i]) for i in range(len(xk0))]
 

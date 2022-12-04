@@ -3,11 +3,13 @@ def gauss(matriz: list):
     else:
         for pivot in range(len(matriz)-1):
             for linha in range(pivot+1,len(matriz)):
-                if matriz[pivot][pivot] != 0: m = matriz[linha][pivot]/matriz[pivot][pivot]
-                else: pass
+                if matriz[pivot][pivot] != 0: 
+                    m = matriz[linha][pivot]/matriz[pivot][pivot]
 
-                for coluna in range(len(matriz[linha])):
-                    matriz[linha][coluna] = round(matriz[linha][coluna] - m*matriz[pivot][coluna],3)
+                    for coluna in range(len(matriz[linha])):
+                        matriz[linha][coluna] = round(matriz[linha][coluna] - m*matriz[pivot][coluna],3)
+                
+                else: pass
 
         zeros = 0
         for n in range(len(matriz)-1): 
@@ -33,7 +35,7 @@ def somalinha(linha: list, solucoes: list):
 
 def resolver(matriz: list):
     if matriz[len(matriz)-1][len(matriz)-1] == 0: return "Sistema Impossível"
-    elif matriz[1][0] == matriz[2][0] == matriz[2][1] == 0:
+    elif matriz[len(matriz)-1][0] == matriz[len(matriz)-1][0] == 0:
         n = list(range(len(matriz)))
         n.reverse()
 
@@ -45,9 +47,8 @@ def resolver(matriz: list):
     else: return None
 
 sistema = [
-    [3,3,1,7],
-    [2,2,-1,3],
-    [1,-1,5,5]
+    [3,1,1],
+    [2,4,-1]
 ]
 
 print(resolver(gauss(sistema)))
